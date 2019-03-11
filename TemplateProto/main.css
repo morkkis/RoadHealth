@@ -1,0 +1,99 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: #d9d9d9;
+}
+
+
+.rh-head {
+    background-color: #e6670c;
+    font-family: 'Anton', sans-serif;
+    color: #fff;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+    font-size: 32px;
+    text-shadow: 1px 1px 1px #333;
+    border-bottom: 3px dashed #fff;
+}
+
+.rh-head-logo {
+    height: 32px;
+    margin-right: 10px;
+}
+
+.rh-main{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.rh-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #bdb7b7;
+    margin: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,.2);
+}
+
+.rh-sensors {
+    flex-grow: 1;
+    flex-basis: 50%;
+}
+
+.rh-video-stream {
+    background-image: url(assets/one-job.jpg);
+    width: 40vw;
+    height: 22vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.rh-map {
+    flex-grow: 1;
+    flex-basis: 50%;
+
+}
+
+.rh-messages {
+    font-family: 'Open Sans Condensed', sans-serif;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+
+.rh-messages p {
+    line-height: 1em;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+}
+
+.rh-footer {
+    background-color: #0f0f0f;
+    color: #fff;
+    padding: 5px 20px;
+    font-size: 11px;
+}
+
+#chart {
+  margin: 0 auto;
+  height: 180px;
+}

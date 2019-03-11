@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RoadHealth</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Open+Sans+Condensed:300|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin="" />
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
+</head>
+<body>
+    <div class="rh-head">
+        <img src="assets/road.svg" class="rh-head-logo" alt="Logo">
+        RoadHealth
+    </div>
+    <div class="rh-main">
+        <div class="rh-sensors">
+            <div class="rh-box">
+                <div class="rh-video-stream"></div>
+            </div>
+            <div class="rh-g-sensor rh-box">
+                <div id="chart">
+                </div>
+            </div>
+        </div>
+        <div class="rh-alerts">
+        <div class="rh-map rh-box">
+            <div id="mapid" style="width: 500px; height: 60vh; position: relative; outline: none;"
+                class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+                tabindex="0">
+                <div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);">
+                    <div class="leaflet-pane leaflet-tile-pane">
+                        <div class="leaflet-layer " style="z-index: 1; opacity: 1;">
+                            <div class="leaflet-tile-container leaflet-zoom-animated"
+                                style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" role="presentation"
+                                    src="https://api.tiles.mapbox.com/v4/mapbox.streets/13/4093/2723.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw"
+                                    class="leaflet-tile leaflet-tile-loaded"
+                                    style="width: 256px; height: 256px; transform: translate3d(56px, -91px, 0px); opacity: 1;"><img
+                                    alt="" role="presentation"
+                                    src="https://api.tiles.mapbox.com/v4/mapbox.streets/13/4094/2723.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw"
+                                    class="leaflet-tile leaflet-tile-loaded"
+                                    style="width: 256px; height: 256px; transform: translate3d(312px, -91px, 0px); opacity: 1;"><img
+                                    alt="" role="presentation"
+                                    src="https://api.tiles.mapbox.com/v4/mapbox.streets/13/4093/2724.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw"
+                                    class="leaflet-tile leaflet-tile-loaded"
+                                    style="width: 256px; height: 256px; transform: translate3d(56px, 165px, 0px); opacity: 1;"><img
+                                    alt="" role="presentation"
+                                    src="https://api.tiles.mapbox.com/v4/mapbox.streets/13/4094/2724.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw"
+                                    class="leaflet-tile leaflet-tile-loaded"
+                                    style="width: 256px; height: 256px; transform: translate3d(312px, 165px, 0px); opacity: 1;"><img
+                                    alt="" role="presentation"
+                                    src="https://api.tiles.mapbox.com/v4/mapbox.streets/13/4092/2723.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw"
+                                    class="leaflet-tile leaflet-tile-loaded"
+                                    style="width: 256px; height: 256px; transform: translate3d(-200px, -91px, 0px); opacity: 1;"><img
+                                    alt="" role="presentation"
+                                    src="https://api.tiles.mapbox.com/v4/mapbox.streets/13/4095/2723.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw"
+                                    class="leaflet-tile leaflet-tile-loaded"
+                                    style="width: 256px; height: 256px; transform: translate3d(568px, -91px, 0px); opacity: 1;"><img
+                                    alt="" role="presentation"
+                                    src="https://api.tiles.mapbox.com/v4/mapbox.streets/13/4092/2724.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw"
+                                    class="leaflet-tile leaflet-tile-loaded"
+                                    style="width: 256px; height: 256px; transform: translate3d(-200px, 165px, 0px); opacity: 1;"><img
+                                    alt="" role="presentation"
+                                    src="https://api.tiles.mapbox.com/v4/mapbox.streets/13/4095/2724.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw"
+                                    class="leaflet-tile leaflet-tile-loaded"
+                                    style="width: 256px; height: 256px; transform: translate3d(568px, 165px, 0px); opacity: 1;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leaflet-pane leaflet-shadow-pane"></div>
+                    <div class="leaflet-pane leaflet-overlay-pane"></div>
+                    <div class="leaflet-pane leaflet-marker-pane"></div>
+                    <div class="leaflet-pane leaflet-tooltip-pane"></div>
+                    <div class="leaflet-pane leaflet-popup-pane"></div>
+                    <div class="leaflet-proxy leaflet-zoom-animated"
+                        style="transform: translate3d(1.04805e+06px, 697379px, 0px) scale(4096);"></div>
+                </div>
+                <div class="leaflet-control-container">
+                    <div class="leaflet-top leaflet-left">
+                        <div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#"
+                                title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#"
+                                title="Zoom out" role="button" aria-label="Zoom out">−</a></div>
+                    </div>
+                    <div class="leaflet-top leaflet-right"></div>
+                    <div class="leaflet-bottom leaflet-left"></div>
+
+                </div>
+            </div>
+        </div>
+        <div class="rh-messages rh-box">
+            <p>03/12/2019 11:45:34 Road Bumper Detected. Ignored.</p>
+            <p>03/12/2019 11:45:36 Road Bumper Detected. Ignored.</p>
+            <p>03/12/2019 11:45:37 Road Bumper Detected. Ignored.</p>
+        </div>
+        </div>
+
+    </div>
+    <div class="rh-footer">&copy;2019. IOTIntHackForce</div>
+</body>
+
+    <script>
+
+
+    /*
+    // this function will generate output in this format
+    // data = [
+        [timestamp, 23],
+        [timestamp, 33],
+        [timestamp, 12]
+        ...
+    ]
+    */
+
+    var lastDate = 0;
+    var data = []
+    function getDayWiseTimeSeries(baseval, count, yrange) {
+        var i = 0;
+        while (i < count) {
+            var x = baseval;
+            var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+
+            data.push({
+                x, y
+            });
+            lastDate = baseval
+            baseval += 86400000;
+            i++;
+        }
+    }
+
+    getDayWiseTimeSeries(new Date('11 Mar 2019 GMT').getTime(), 10, {
+        min: 10,
+        max: 90
+    })
+
+    function getNewSeries(baseval, yrange) {
+        var newDate = baseval + 864000;
+        lastDate = newDate
+        data.push({
+            x: newDate,
+            y: Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min
+        })
+    }
+
+    function resetData() {
+        data = data.slice(data.length - 10, data.length);
+    }
+
+    var options = {
+        chart: {
+            height: 150,
+            width: 500,
+            type: 'line',
+            animations: {
+                enabled: true,
+                easing: 'linear',
+                dynamicAnimation: {
+                    speed: 200
+                }
+            },
+            toolbar: {
+                show: false
+            },
+            zoom: {
+                enabled: false
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+           width: 2,
+           colors: '#e6670c'
+        },
+        series: [{
+            data: data
+        }],
+        title: {
+            text: 'G Sensor',
+            align: 'left'
+        },
+        markers: {
+            size: 0
+        },
+        xaxis: {
+            type: 'datetime',
+            range: 7776000,
+        },
+        yaxis: {
+            max: 100
+        },
+        legend: {
+            show: false
+        },
+    }
+
+    var chart = new ApexCharts(
+        document.querySelector("#chart"),
+        options
+    );
+
+    chart.render();
+
+    var dataPointsLength = 10;
+
+    window.setInterval(function () {
+        getNewSeries(lastDate, {
+            min: 10,
+            max: 90
+        })
+
+        chart.updateSeries([{
+            data: data
+        }])
+    }, 200)
+
+    // every 60 seconds, we reset the data 
+    window.setInterval(function () {
+        resetData()
+        chart.updateSeries([{
+            data
+        }], false, true)
+    }, 60000)
+
+
+    </script>
+</html>
